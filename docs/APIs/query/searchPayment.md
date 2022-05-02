@@ -28,7 +28,7 @@ type SearchPaymentInput {
 ```gql
 type TimeRange {
   rangeType: 'day' | 'week' | 'month' | 'year';
-  criteria: Date;
+  criteriaDate: Date;
 }
 
 type ScoreRange: {
