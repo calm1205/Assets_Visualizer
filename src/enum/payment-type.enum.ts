@@ -7,6 +7,7 @@ export enum PaymentType {
   EXPENSES = 'EXPENSES',
   WASTE = 'WASTE',
   INVESTMENT = 'INVESTMENT',
+  SELF_INVESTMENT = 'SELF_INVESTMENT',
 }
 
 registerEnumType(PaymentType, {
