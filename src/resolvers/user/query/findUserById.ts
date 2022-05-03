@@ -1,5 +1,6 @@
 import { ParseUUIDPipe } from '@nestjs/common';
 import { Args, Query, Resolver } from '@nestjs/graphql';
+
 import { User } from '~/entities/user.entity';
 import { FindUserByIdService } from '~/services/user/findUserById.service';
 

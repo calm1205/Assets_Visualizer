@@ -7,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+
 import { Payment } from './payment.entity';
 
 @Entity({ name: 'users' })

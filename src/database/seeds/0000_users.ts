@@ -1,6 +1,7 @@
-import { Factory, Seeder } from 'typeorm-seeding';
 import { Connection } from 'typeorm';
-import { userId } from '../uuid';
+import { Factory, Seeder } from 'typeorm-seeding';
+
+import { userId } from '~/database/uuid';
 import { UserInput } from '~/inputs/user.input';
 
 type DummyUserInput = UserInput & { id: string };
