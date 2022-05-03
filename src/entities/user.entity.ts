@@ -3,9 +3,11 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Payment } from './payment.entity';
 
 @Entity({ name: 'users' })
 @ObjectType({ description: 'ユーザ' })
@@ -21,6 +23,9 @@ export class User {
   @Column()
   @Field({ description: 'パスワード' })
   password: string;
+
+  @OneToMany(() => Payment, (_) => _.user)
+  payments: Payment[];
 
   @CreateDateColumn({ name: 'created_at', type: 'timestamp', precision: 0 })
   readonly createdAt: Date;
