@@ -1,0 +1,20 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""ユーザ"""
+type User {
+  """id"""
+  id: ID!
+
+  """メールアドレス"""
+  email: String!
+
+  """パスワード"""
+  password: String!
+}
+
+type Query {
+  """ユーザのid検索"""
+  findUserById(userId: String!): User!
+}
