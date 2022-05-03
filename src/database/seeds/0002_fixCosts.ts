@@ -1,9 +1,9 @@
 import { Factory, Seeder } from 'typeorm-seeding';
 import { Connection } from 'typeorm';
 import { userId } from '../uuid';
-import { PaymentType } from '~/enum/payment-type.enum';
-import { PaymentCycle } from '~/enum/payment-cycle.enum';
-import { FixCostInput } from '~/input/fixCost.input';
+import { PaymentType } from '~/enums/payment-type.enum';
+import { PaymentCycle } from '~/enums/payment-cycle.enum';
+import { FixCostInput } from '~/inputs/fixCost.input';
 
 export default class CreateFixCost implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<any> {

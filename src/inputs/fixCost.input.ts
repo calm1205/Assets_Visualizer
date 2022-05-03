@@ -1,10 +1,11 @@
-import { Field, InputType, Int } from '@nestjs/graphql';
-import { IsDate, IsNotEmpty } from 'class-validator';
-import { PaymentType } from '~/enum/payment-type.enum';
+import { Field, Float, InputType, Int } from '@nestjs/graphql';
+import { IsNotEmpty } from 'class-validator';
+import { PaymentCycle } from '~/enums/payment-cycle.enum';
+import { PaymentType } from '~/enums/payment-type.enum';
 import { IsUserExist } from './customValidator/isUserExist';
 
-@InputType({ description: '支払い記帳用Input' })
-export class PaymentInput {
+@InputType({ description: '固定費登録用Input' })
+export class FixCostInput {
   @IsUserExist({ message: 'そのユーザは存在しません。' })
   @Field({ description: 'ユーザId' })
   userId: string;
@@ -17,15 +18,14 @@ export class PaymentInput {
   @Field(() => Int, { description: '金額' })
   price: number;
 
-  @IsDate()
-  @Field(() => Date, { nullable: true, description: '支払い日時' })
-  paymentDate?: string;
+  @IsNotEmpty({ message: '支払い頻度は必須です。' })
+  @Field(() => PaymentCycle, { description: '支払い頻度' })
+  paymentCycle?: PaymentCycle;
 
   @IsNotEmpty({ message: '支払いジャンルは必須です。' })
   @Field(() => PaymentType, { description: '支払いジャンル' })
   paymentType: PaymentType;
 
-  @IsNotEmpty({ message: '満足度は必須です。' })
-  @Field(() => Int, { description: '満足度' })
-  score: number;
+  @Field(() => Float, { nullable: true, description: '年利' })
+  annualInterest?: number;
 }

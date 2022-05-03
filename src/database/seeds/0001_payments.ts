@@ -1,8 +1,8 @@
 import { Factory, Seeder } from 'typeorm-seeding';
 import { Connection } from 'typeorm';
 import { userId } from '../uuid';
-import { PaymentType } from '~/enum/payment-type.enum';
-import { PaymentInput } from '~/input/payment.input';
+import { PaymentType } from '~/enums/payment-type.enum';
+import { PaymentInput } from '~/inputs/payment.input';
 
 export default class CreatePayment implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<any> {

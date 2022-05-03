@@ -7,8 +7,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { PaymentCycle } from '~/enum/payment-cycle.enum';
-import { PaymentType } from '~/enum/payment-type.enum';
+import { PaymentCycle } from '~/enums/payment-cycle.enum';
+import { PaymentType } from '~/enums/payment-type.enum';
 import { User } from './user.entity';
 
 @Entity({ name: 'fix_costs' })
