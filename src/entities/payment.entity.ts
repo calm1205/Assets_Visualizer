@@ -32,7 +32,7 @@ export class Payment {
   @Field(() => Int, { description: '支払い金額' })
   price: number;
 
-  @Column()
+  @Column({ default: new Date() })
   @Field(() => Date, { description: '支払日' })
   paymentDate: Date;
 

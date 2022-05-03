@@ -1,4 +1,4 @@
-import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
+import { Field, Float, ID, Int, ObjectType } from '@nestjs/graphql';
 import {
   Column,
   CreateDateColumn,
@@ -11,7 +11,7 @@ import { PaymentCycle } from '~/enum/payment-cycle.enum';
 import { PaymentType } from '~/enum/payment-type.enum';
 import { User } from './user.entity';
 
-@Entity({ name: 'fixCosts' })
+@Entity({ name: 'fix_costs' })
 @ObjectType({ description: '固定費' })
 export class Payment {
   @PrimaryGeneratedColumn('uuid')
@@ -34,12 +34,16 @@ export class Payment {
   price: number;
 
   @Column()
-  @Field(() => PaymentCycle, { description: '支払日' })
+  @Field(() => PaymentCycle, { description: '支払頻度' })
   paymentCycle: PaymentCycle;
 
   @Column()
   @Field(() => PaymentType, { description: '支払いジャンル' })
   paymentType: PaymentType;
+
+  @Column({ type: 'float', default: 0.0 })
+  @Field(() => Float, { description: '年利(%)' })
+  annualInterest: number;
 
   @CreateDateColumn({ name: 'created_at', type: 'timestamp', precision: 0 })
   readonly createdAt: Date;

@@ -3,6 +3,8 @@ args=Initial
 
 up:
 	docker compose up -d
+	npm typeorm migration:run
+	npm run seed:run
 
 run:
 	npm run build
