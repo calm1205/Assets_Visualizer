@@ -7,7 +7,9 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+
 import { PaymentType } from '~/enums/payment-type.enum';
+
 import { User } from './user.entity';
 
 @Entity({ name: 'payments' })

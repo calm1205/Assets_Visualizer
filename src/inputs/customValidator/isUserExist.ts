@@ -5,6 +5,7 @@ import {
   ValidatorConstraintInterface,
 } from 'class-validator';
 import { getRepository } from 'typeorm';
+
 import { User } from '~/entities/user.entity';
 
 @ValidatorConstraint({ async: true })

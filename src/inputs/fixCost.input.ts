@@ -1,7 +1,9 @@
 import { Field, Float, InputType, Int } from '@nestjs/graphql';
 import { IsNotEmpty } from 'class-validator';
+
 import { PaymentCycle } from '~/enums/payment-cycle.enum';
 import { PaymentType } from '~/enums/payment-type.enum';
+
 import { IsUserExist } from './customValidator/isUserExist';
 
 @InputType({ description: '固定費登録用Input' })
