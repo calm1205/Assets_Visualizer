@@ -8,10 +8,10 @@ module.exports = {
   autoLoadEntities: true,
 
   entities: ['dist/src/entities/*.entity.js'],
-  migrations: ['dist/src/migrations/*.js'],
+  migrations: ['dist/src/database/migrations/*.js'],
   cli: {
     entitiesDir: 'src/entities',
-    migrationsDir: 'src/migrations',
+    migrationsDir: 'src/database/migrations',
   },
   seeds: ['src/database/seeds/**/*{.ts,.js}'],
   factories: ['src/database/factories/**/*{.ts,.js}'],
