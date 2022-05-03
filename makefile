@@ -1,5 +1,5 @@
 
-args=hoge
+args=Initial
 
 up:
 	docker compose up -d
@@ -26,6 +26,12 @@ seed:
 
 drop:
 	npm run typeorm schema:drop
+
+reset:
+	npm run build
+	npm run typeorm schema:drop
+	npm run typeorm migration:run
+	npm run seed:run
 
 sample: 
 	@echo 'args is $(args).'

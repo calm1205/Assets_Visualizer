@@ -40,8 +40,8 @@ export class Payment {
   @Field(() => PaymentType, { description: '支払いジャンル' })
   paymentType: PaymentType;
 
-  @Column()
-  @Field(() => Int, { description: '満足度' })
+  @Column({ nullable: true })
+  @Field(() => Int, { nullable: true, description: '満足度' })
   score: number;
 
   @CreateDateColumn({ name: 'created_at', type: 'timestamp', precision: 0 })
