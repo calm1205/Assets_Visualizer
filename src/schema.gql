@@ -2,6 +2,43 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+"""支払い"""
+type Payment {
+  """id"""
+  id: ID!
+
+  """ユーザId"""
+  userId: String!
+
+  """支払いタイトル"""
+  name: String!
+
+  """支払い金額"""
+  price: Int!
+
+  """支払日"""
+  paymentDate: DateTime!
+
+  """支払いジャンル"""
+  paymentType: PaymentType!
+
+  """満足度"""
+  score: Int
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+"""payment type"""
+enum PaymentType {
+  EXPENSES
+  WASTE
+  INVESTMENT
+  SELF_INVESTMENT
+}
+
 """ユーザ"""
 type User {
   """id"""
@@ -14,7 +51,44 @@ type User {
   password: String!
 }
 
+type Token {
+  """JWT"""
+  accessToken: String!
+}
+
 type Query {
   """ユーザのid検索"""
   findUserById(userId: String!): User!
+
+  """支払いのid検索"""
+  findPaymentById(paymentId: String!): Payment!
+}
+
+type Mutation {
+  """ユーザの登録"""
+  signUp(input: SignUpInput!): User!
+
+  """ログイン"""
+  signIn(input: SignInInput!): Token!
+}
+
+"""ユーザ登録用Input"""
+input SignUpInput {
+  """メールアドレス"""
+  email: String!
+
+  """パスワード"""
+  password: String!
+
+  """確認用パスワード"""
+  passwordConfirm: String!
+}
+
+"""ログイン用Input"""
+input SignInInput {
+  """メールアドレス"""
+  email: String!
+
+  """パスワード"""
+  password: String!
 }

@@ -1,8 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import { AuthModule } from './auth.module';
 import { GQLModule } from './graphql.module';
-import { UsersModule } from './user.module';
+import { PaymentModule } from './payment.module';
+import { UserModule } from './user.module';
 
 @Module({
   imports: [
@@ -10,7 +12,9 @@ import { UsersModule } from './user.module';
       autoLoadEntities: true,
     }),
     GQLModule,
-    UsersModule,
+    UserModule,
+    AuthModule,
+    PaymentModule,
   ],
 })
 export class AppModule {}

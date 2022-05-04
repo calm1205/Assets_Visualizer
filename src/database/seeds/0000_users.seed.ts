@@ -1,17 +1,22 @@
+import * as bcrypt from 'bcrypt';
 import { Connection } from 'typeorm';
 import { Factory, Seeder } from 'typeorm-seeding';
 
 import { userId } from '~/database/uuid';
-import { UserInput } from '~/inputs/user.input';
+import { SignUpInput } from '~/interfaces/inputs/signup.input';
 
-type DummyUserInput = UserInput & { id: string };
+type DummyUserInput = SignUpInput & { id: string };
 
 export default class CreateUser implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<any> {
+    const salt = await bcrypt.genSalt();
+    const hashPassword = await bcrypt.hash('passw0rd', salt);
+
     const dummyUser: DummyUserInput = {
       id: userId,
       email: 'sample@gmail.com',
-      password: 'password',
+      password: hashPassword,
+      passwordConfirm: 'passw0rd',
     };
 
     await connection
