@@ -17,7 +17,7 @@ export class User {
   @Field(() => ID, { description: 'id' })
   id: string;
 
-  @Column()
+  @Column({ unique: true })
   @Field({ description: 'メールアドレス' })
   email: string;
 

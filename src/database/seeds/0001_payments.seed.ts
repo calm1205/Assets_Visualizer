@@ -1,43 +1,44 @@
 import { Connection } from 'typeorm';
 import { Factory, Seeder } from 'typeorm-seeding';
 
-import { PaymentCycle } from '~/enums/payment-cycle.enum';
 import { PaymentType } from '~/enums/payment-type.enum';
-import { FixCostInput } from '~/inputs/fixCost.input';
+import { PaymentInput } from '~/interfaces/inputs/payment.input';
 
 import { userId } from '../uuid';
 
-export default class CreateFixCost implements Seeder {
+export default class CreatePayment implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<any> {
-    const data: FixCostInput[] = [
+    const data: PaymentInput[] = [
       {
         userId: userId,
-        name: '家賃',
-        price: 100000,
-        paymentCycle: PaymentCycle.MONTHLY,
+        name: '交通費',
+        price: 1000,
+        paymentDate: '2020-01-01',
         paymentType: PaymentType.EXPENSES,
+        score: null,
       },
       {
         userId: userId,
-        name: 'ジム',
+        name: '飲み会',
         price: 6000,
-        paymentCycle: PaymentCycle.MONTHLY,
-        paymentType: PaymentType.SELF_INVESTMENT,
+        paymentDate: '2020-01-01',
+        paymentType: PaymentType.WASTE,
+        score: 80,
       },
       {
         userId: userId,
-        name: '積立NISA',
-        price: 30000,
-        paymentCycle: PaymentCycle.MONTHLY,
+        name: '参考書',
+        price: 3000,
+        paymentDate: '2020-01-01',
         paymentType: PaymentType.INVESTMENT,
-        annualInterest: 0.05,
+        score: null,
       },
     ];
 
     await connection
       .createQueryBuilder()
       .insert()
-      .into('fix_costs')
+      .into('payments')
       .values(data)
       .execute();
   }

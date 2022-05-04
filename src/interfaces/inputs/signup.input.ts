@@ -8,11 +8,13 @@ import {
 } from 'class-validator';
 
 import { IsConfirm } from './customValidator/isConfirm';
+import { IsUnique } from './customValidator/isUnique';
 
 @InputType({ description: 'ユーザ登録用Input' })
-export class UserInput {
+export class SignUpInput {
   @IsNotEmpty({ message: 'メールアドレスは必須です。' })
   @IsEmail({ message: 'メールアドレスの形式が不正です。' })
+  @IsUnique('users', 'email', { message: 'そのメールアドレスは登録済みです。' })
   @Field({ description: 'メールアドレス' })
   email: string;
 

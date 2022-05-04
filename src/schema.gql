@@ -14,6 +14,11 @@ type User {
   password: String!
 }
 
+type Token {
+  """JWT"""
+  accessToken: String!
+}
+
 type Query {
   """ユーザのid検索"""
   findUserById(userId: String!): User!
@@ -21,11 +26,14 @@ type Query {
 
 type Mutation {
   """ユーザの登録"""
-  signUp(userInput: UserInput!): User!
+  signUp(input: SignUpInput!): User!
+
+  """ログイン"""
+  signIn(input: SignInInput!): Token!
 }
 
 """ユーザ登録用Input"""
-input UserInput {
+input SignUpInput {
   """メールアドレス"""
   email: String!
 
@@ -34,4 +42,13 @@ input UserInput {
 
   """確認用パスワード"""
   passwordConfirm: String!
+}
+
+"""ログイン用Input"""
+input SignInInput {
+  """メールアドレス"""
+  email: String!
+
+  """パスワード"""
+  password: String!
 }
