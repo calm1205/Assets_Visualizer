@@ -5,8 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import config from '~/config';
 import { User } from '~/entities/user.entity';
-import UserResolver from '~/resolvers/user';
-import UserService from '~/services/user';
+import UserResolvers from '~/resolvers/user';
+import UserServices from '~/services/user';
 
 @Module({
   imports: [
@@ -19,6 +19,6 @@ import UserService from '~/services/user';
       },
     }),
   ],
-  providers: [...UserResolver, ...UserService],
+  providers: [...UserResolvers, ...UserServices],
 })
 export class UserModule {}

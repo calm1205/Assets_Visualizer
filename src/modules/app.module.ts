@@ -1,7 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import { AuthModule } from './auth.module';
 import { GQLModule } from './graphql.module';
+import { PaymentModule } from './payment.module';
 import { UserModule } from './user.module';
 
 @Module({
@@ -11,6 +13,8 @@ import { UserModule } from './user.module';
     }),
     GQLModule,
     UserModule,
+    AuthModule,
+    PaymentModule,
   ],
 })
 export class AppModule {}
