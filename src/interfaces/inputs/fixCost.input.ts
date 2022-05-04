@@ -4,11 +4,11 @@ import { IsNotEmpty } from 'class-validator';
 import { PaymentCycle } from '~/enums/payment-cycle.enum';
 import { PaymentType } from '~/enums/payment-type.enum';
 
-import { IsUserExist } from './customValidator/isUserExist';
+import { IsExist } from './customValidator/isExist';
 
 @InputType({ description: '固定費登録用Input' })
 export class FixCostInput {
-  @IsUserExist({ message: 'そのユーザは存在しません。' })
+  @IsExist('users', 'user_id', { message: 'そのユーザは存在しません。' })
   @Field({ description: 'ユーザId' })
   userId: string;
 
