@@ -3,6 +3,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import config from '~/config';
 import { User } from '~/entities/user.entity';
 import UserResolver from '~/resolvers/user';
 import UserService from '~/services/user';
@@ -12,7 +13,7 @@ import UserService from '~/services/user';
     TypeOrmModule.forFeature([User]),
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
-      secret: 'secret',
+      secret: config.JWT_SECRET,
       signOptions: {
         expiresIn: 36000,
       },
