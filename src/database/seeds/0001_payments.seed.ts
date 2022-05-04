@@ -6,9 +6,11 @@ import { PaymentInput } from '~/interfaces/inputs/payment.input';
 
 import { userId } from '../uuid';
 
+type Input = PaymentInput & { userId: string };
+
 export default class CreatePayment implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<any> {
-    const data: PaymentInput[] = [
+    const data: Input[] = [
       {
         userId: userId,
         name: '交通費',

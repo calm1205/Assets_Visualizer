@@ -70,6 +70,9 @@ type Mutation {
 
   """ログイン"""
   signIn(input: SignInInput!): Token!
+
+  """支払い登録/更新"""
+  upsertPayment(input: PaymentInput!): Payment!
 }
 
 """ユーザ登録用Input"""
@@ -91,4 +94,25 @@ input SignInInput {
 
   """パスワード"""
   password: String!
+}
+
+"""支払い記帳用Input"""
+input PaymentInput {
+  """支払いId"""
+  paymentId: String
+
+  """支払いタイトル"""
+  name: String!
+
+  """金額"""
+  price: Int!
+
+  """支払い日時"""
+  paymentDate: DateTime = "2022-05-04T13:33:47.040Z"
+
+  """支払いジャンル"""
+  paymentType: PaymentType!
+
+  """満足度"""
+  score: Int!
 }

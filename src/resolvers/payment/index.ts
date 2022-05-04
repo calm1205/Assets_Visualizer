@@ -1,3 +1,4 @@
+import { UpsertPayment } from './mutation/upsertPayment';
 import { FindPaymentById } from './query/findPaymentById';
 
-export default [FindPaymentById];
+export default [FindPaymentById, UpsertPayment];
