@@ -9,4 +9,4 @@ import UserService from '~/services/user';
   imports: [TypeOrmModule.forFeature([User])],
   providers: [...UserResolver, ...UserService],
 })
-export class UsersModule {}
+export class UserModule {}
