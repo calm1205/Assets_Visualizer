@@ -11,7 +11,8 @@ export default class CreateUser implements Seeder {
     const dummyUser: DummyUserInput = {
       id: userId,
       email: 'sample@gmail.com',
-      password: 'password',
+      password: 'passw0rd',
+      passwordConfirm: 'passw0rd',
     };
 
     await connection

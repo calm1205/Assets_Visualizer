@@ -18,3 +18,20 @@ type Query {
   """ユーザのid検索"""
   findUserById(userId: String!): User!
 }
+
+type Mutation {
+  """ユーザの登録"""
+  signUp(userInput: UserInput!): User!
+}
+
+"""ユーザ登録用Input"""
+input UserInput {
+  """メールアドレス"""
+  email: String!
+
+  """パスワード"""
+  password: String!
+
+  """確認用パスワード"""
+  passwordConfirm: String!
+}
