@@ -2,6 +2,9 @@
 /dist
 /node_modules
 
+# schema
+src/schema.gql
+
 # env
 .env
 

@@ -118,7 +118,7 @@ input PaymentInput {
   price: Int!
 
   """支払い日時"""
-  paymentDate: DateTime = "2022-05-05T03:04:28.190Z"
+  paymentDate: DateTime = "2022-05-05T03:06:12.452Z"
 
   """支払いジャンル"""
   paymentType: PaymentType!
