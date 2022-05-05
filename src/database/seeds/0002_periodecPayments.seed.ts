@@ -37,7 +37,7 @@ export default class CreatePeriodecPayment implements Seeder {
     await connection
       .createQueryBuilder()
       .insert()
-      .into('fix_costs')
+      .into('periodec_payments')
       .values(data)
       .execute();
   }

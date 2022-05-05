@@ -15,12 +15,12 @@ import { User } from './user.entity';
 
 @Entity({ name: 'periodec_payments' })
 @ObjectType({ description: '定期支払テーブル' })
-export class Payment {
+export class PeriodecPayment {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => ID, { description: 'id' })
   id: string;
 
-  @ManyToOne(() => User, (_) => _.payments)
+  @ManyToOne(() => User, (_) => _.periodecPayments)
   user: User;
 
   @Column()
