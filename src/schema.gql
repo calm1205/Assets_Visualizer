@@ -51,6 +51,13 @@ type User {
   password: String!
 }
 
+"""mutationの返却値"""
+type ResultOutput {
+  """データ更新の成功可否"""
+  result: Boolean!
+}
+
+"""jwtの返却型"""
 type Token {
   """JWT"""
   accessToken: String!
@@ -72,7 +79,10 @@ type Mutation {
   signIn(input: SignInInput!): Token!
 
   """支払い登録/更新"""
-  upsertPayment(input: PaymentInput!): Payment!
+  upsertPaymentById(input: PaymentInput!): ResultOutput!
+
+  """支払い削除"""
+  deletePaymentById(input: DeletePaymentInput!): ResultOutput!
 }
 
 """ユーザ登録用Input"""
@@ -108,11 +118,17 @@ input PaymentInput {
   price: Int!
 
   """支払い日時"""
-  paymentDate: DateTime = "2022-05-04T13:33:47.040Z"
+  paymentDate: DateTime = "2022-05-05T03:04:28.190Z"
 
   """支払いジャンル"""
   paymentType: PaymentType!
 
   """満足度"""
-  score: Int!
+  score: Int
+}
+
+"""支払い削除用Input"""
+input DeletePaymentInput {
+  """支払いId"""
+  paymentId: String!
 }
