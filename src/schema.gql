@@ -118,13 +118,13 @@ input PaymentInput {
   price: Int!
 
   """支払い日時"""
-  paymentDate: DateTime = "2022-05-05T02:56:58.860Z"
+  paymentDate: DateTime = "2022-05-05T03:04:28.190Z"
 
   """支払いジャンル"""
   paymentType: PaymentType!
 
   """満足度"""
-  score: Int!
+  score: Int
 }
 
 """支払い削除用Input"""

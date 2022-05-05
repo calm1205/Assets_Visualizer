@@ -15,7 +15,7 @@ import { IsExist } from './customValidator/isExist';
 @InputType({ description: '支払い記帳用Input' })
 export class PaymentInput {
   @IsExist('payments', 'id', { message: '該当の支払いは存在しません。' })
-  @ValidateIf((_) => _.paymentId)
+  @ValidateIf((_) => !!_.paymentId)
   @Field({ nullable: true, description: '支払いId' })
   paymentId?: string;
 
@@ -44,6 +44,7 @@ export class PaymentInput {
   @IsNotEmpty({ message: '満足度は必須です。' })
   @Min(1, { message: '満足度は1以上を指定してください。' })
   @Max(100, { message: '満足度は100以下を指定してください。' })
-  @Field(() => Int, { description: '満足度' })
-  score: number;
+  @ValidateIf((_) => _.score === 0 || !!_.score)
+  @Field(() => Int, { nullable: true, description: '満足度' })
+  score?: number;
 }
