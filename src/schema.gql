@@ -80,6 +80,9 @@ type Mutation {
 
   """支払い登録/更新"""
   upsertPayment(input: PaymentInput!): ResultOutput!
+
+  """支払い削除"""
+  deletePaymentById(input: DeletePaymentInput!): ResultOutput!
 }
 
 """ユーザ登録用Input"""
@@ -115,11 +118,17 @@ input PaymentInput {
   price: Int!
 
   """支払い日時"""
-  paymentDate: DateTime = "2022-05-05T02:40:25.238Z"
+  paymentDate: DateTime = "2022-05-05T02:53:00.091Z"
 
   """支払いジャンル"""
   paymentType: PaymentType!
 
   """満足度"""
   score: Int!
+}
+
+"""支払い削除用Input"""
+input DeletePaymentInput {
+  """支払いId"""
+  paymentId: String!
 }
