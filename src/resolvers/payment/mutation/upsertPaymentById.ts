@@ -9,12 +9,12 @@ import { GqlAuthGuard } from '~/services/auth/guards/gql-auth.guard';
 import { UpsertPaymentService } from '~/services/payment/upsertPaymentById.service';
 
 @Resolver(() => ResultOutput)
-export class UpsertPayment {
+export class UpsertPaymentById {
   constructor(private readonly usecase: UpsertPaymentService) {}
 
   @UseGuards(GqlAuthGuard)
   @Mutation(() => ResultOutput, { description: '支払い登録/更新' })
-  async upsertPayment(
+  async upsertPaymentById(
     @Args('input') input: PaymentInput,
     @CurrentUser() user: User,
   ) {

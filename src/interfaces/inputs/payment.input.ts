@@ -1,5 +1,12 @@
 import { Field, InputType, Int } from '@nestjs/graphql';
-import { IsDate, IsNotEmpty, Max, MaxLength, Min } from 'class-validator';
+import {
+  IsDate,
+  IsNotEmpty,
+  Max,
+  MaxLength,
+  Min,
+  ValidateIf,
+} from 'class-validator';
 
 import { PaymentType } from '~/enums/payment-type.enum';
 
@@ -8,6 +15,7 @@ import { IsExist } from './customValidator/isExist';
 @InputType({ description: '支払い記帳用Input' })
 export class PaymentInput {
   @IsExist('payments', 'id', { message: '該当の支払いは存在しません。' })
+  @ValidateIf((_) => _.paymentId)
   @Field({ nullable: true, description: '支払いId' })
   paymentId?: string;
 
