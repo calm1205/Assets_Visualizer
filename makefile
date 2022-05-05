@@ -19,7 +19,7 @@ migrate-gen:
 	npx typeorm migration:generate -n $(args)
 
 migrate-reset:
-	rm -rf ./src/migrations/*.ts
+	rm -rf ./src/database/migrations/*.ts
 	npm run build
 	npx typeorm migration:generate -n Inisial
 

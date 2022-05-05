@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 
 import { Payment } from './payment.entity';
+import { PeriodecPayment } from './periodecPayment.entity';
 
 @Entity({ name: 'users' })
 @ObjectType({ description: 'ユーザ' })
@@ -27,6 +28,9 @@ export class User {
 
   @OneToMany(() => Payment, (_) => _.user)
   payments: Payment[];
+
+  @OneToMany(() => PeriodecPayment, (_) => _.user)
+  periodecPayments: PeriodecPayment[];
 
   @CreateDateColumn({ name: 'created_at', type: 'timestamp', precision: 0 })
   readonly createdAt: Date;

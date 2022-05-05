@@ -1,13 +1,13 @@
 import { Field, Float, InputType, Int } from '@nestjs/graphql';
 import { IsNotEmpty } from 'class-validator';
 
-import { PaymentCycle } from '~/enums/payment-cycle.enum';
+import { PaymentPeriod } from '~/enums/payment-cycle.enum';
 import { PaymentType } from '~/enums/payment-type.enum';
 
 import { IsExist } from './customValidator/isExist';
 
 @InputType({ description: '固定費登録用Input' })
-export class FixCostInput {
+export class PeriodecPaymentInput {
   @IsExist('users', 'user_id', { message: 'そのユーザは存在しません。' })
   @Field({ description: 'ユーザId' })
   userId: string;
@@ -21,8 +21,8 @@ export class FixCostInput {
   price: number;
 
   @IsNotEmpty({ message: '支払い頻度は必須です。' })
-  @Field(() => PaymentCycle, { description: '支払い頻度' })
-  paymentCycle?: PaymentCycle;
+  @Field(() => PaymentPeriod, { description: '支払い頻度' })
+  paymentPeriod?: PaymentPeriod;
 
   @IsNotEmpty({ message: '支払いジャンルは必須です。' })
   @Field(() => PaymentType, { description: '支払いジャンル' })
