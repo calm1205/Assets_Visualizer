@@ -28,9 +28,9 @@
 | created_at   | date                  | 作成日            | システムカラム             |
 | updated_at   | date                  | 更新日            | システムカラム             |
 
-## fix_costs
+## periodec_payments
 
-固定費テーブル
+定期支払テーブル
 
 | カラム名        | 定義                             | 説明              | 備考                       |
 | --------------- | -------------------------------- | ----------------- | -------------------------- |
@@ -38,7 +38,7 @@
 | user_id         | uuid(fk)                         | ユーザ id         |
 | name            | varchar(255)                     | 支払いタイトル    |
 | price           | integer                          | 支払い金額        |
-| payment_cycle   | varchar(255)                     | 支払い周期        | 日、週、月、年             |
+| payment_period  | varchar(255)                     | 支払い周期        | 日、週、月、年             |
 | payment_type    | varchar(255)                     | 支払いジャンル id | 浪費、消費、投資、自己投資 |
 | annual_interest | float(255),max: 100.0,default: 0 | 年利              | %                          |
 | created_at      | date                             | 作成日            | システムカラム             |
@@ -55,7 +55,7 @@
 | investment      | 投資     |
 | self_investment | 自己投資 |
 
-## payment_cycle_enum
+## payment_period_enum
 
 | key     | 説明 |
 | ------- | ---- |

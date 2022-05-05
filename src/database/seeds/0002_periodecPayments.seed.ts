@@ -1,34 +1,34 @@
 import { Connection } from 'typeorm';
 import { Factory, Seeder } from 'typeorm-seeding';
 
-import { PaymentCycle } from '~/enums/payment-cycle.enum';
+import { PaymentPeriod } from '~/enums/payment-cycle.enum';
 import { PaymentType } from '~/enums/payment-type.enum';
-import { FixCostInput } from '~/interfaces/inputs/fixCost.input';
+import { PeriodecPaymentInput } from '~/interfaces/inputs/periodecPayment.input';
 
 import { userId } from '../uuid';
 
-export default class CreateFixCost implements Seeder {
+export default class CreatePeriodecPayment implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<any> {
-    const data: FixCostInput[] = [
+    const data: PeriodecPaymentInput[] = [
       {
         userId: userId,
         name: '家賃',
         price: 100000,
-        paymentCycle: PaymentCycle.MONTHLY,
+        paymentPeriod: PaymentPeriod.MONTHLY,
         paymentType: PaymentType.EXPENSES,
       },
       {
         userId: userId,
         name: 'ジム',
         price: 6000,
-        paymentCycle: PaymentCycle.MONTHLY,
+        paymentPeriod: PaymentPeriod.MONTHLY,
         paymentType: PaymentType.SELF_INVESTMENT,
       },
       {
         userId: userId,
         name: '積立NISA',
         price: 30000,
-        paymentCycle: PaymentCycle.MONTHLY,
+        paymentPeriod: PaymentPeriod.MONTHLY,
         paymentType: PaymentType.INVESTMENT,
         annualInterest: 0.05,
       },

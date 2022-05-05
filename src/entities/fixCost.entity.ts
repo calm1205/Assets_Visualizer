@@ -8,13 +8,13 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { PaymentCycle } from '~/enums/payment-cycle.enum';
+import { PaymentPeriod } from '~/enums/payment-cycle.enum';
 import { PaymentType } from '~/enums/payment-type.enum';
 
 import { User } from './user.entity';
 
-@Entity({ name: 'fix_costs' })
-@ObjectType({ description: '固定費' })
+@Entity({ name: 'periodec_payments' })
+@ObjectType({ description: '定期支払テーブル' })
 export class Payment {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => ID, { description: 'id' })
@@ -36,8 +36,8 @@ export class Payment {
   price: number;
 
   @Column()
-  @Field(() => PaymentCycle, { description: '支払頻度' })
-  paymentCycle: PaymentCycle;
+  @Field(() => PaymentPeriod, { description: '支払頻度' })
+  paymentPeriod: PaymentPeriod;
 
   @Column()
   @Field(() => PaymentType, { description: '支払いジャンル' })
