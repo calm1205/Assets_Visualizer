@@ -17,12 +17,15 @@ export class DeletePaymentByIdService {
   ) {}
 
   async execute(input: DeletePaymentInput, user: User): Promise<ResultOutput> {
-    const dbPayment = await this.paymentRepository.findOne(input.paymentId);
+    const paymentId = input.paymentId;
+    const paymentRepository = this.paymentRepository;
+
+    const dbPayment = await paymentRepository.findOne(paymentId);
 
     if (dbPayment.userId !== user.id)
       throw new BadRequestException('自身の支払い以外は削除できません。');
 
-    const deleteResult = await this.paymentRepository.delete(input.paymentId);
+    const deleteResult = await paymentRepository.delete(paymentId);
     return new Result(deleteResult).result;
   }
 }
