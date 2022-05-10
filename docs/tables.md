@@ -24,7 +24,7 @@
 | price        | integer               | 支払い金額        |
 | payment_date | datetime              | 支払い日時        |
 | payment_type | varchar(255)          | 支払いジャンル id | 浪費、消費、投資、自己投資 |
-| score        | integer,max:100,min:1 | 満足度            | 100                        |
+| satisfaction | integer,max:100,min:1 | 満足度            | 100                        |
 | created_at   | date                  | 作成日            | システムカラム             |
 | updated_at   | date                  | 更新日            | システムカラム             |
 

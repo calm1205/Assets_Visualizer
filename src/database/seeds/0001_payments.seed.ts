@@ -17,7 +17,7 @@ export default class CreatePayment implements Seeder {
         price: 1000,
         paymentDate: '2020-01-01',
         paymentType: PaymentType.EXPENSES,
-        score: null,
+        satisfaction: null,
       },
       {
         userId: userId,
@@ -25,7 +25,7 @@ export default class CreatePayment implements Seeder {
         price: 6000,
         paymentDate: '2020-01-01',
         paymentType: PaymentType.WASTE,
-        score: 80,
+        satisfaction: 80,
       },
       {
         userId: userId,
@@ -33,7 +33,7 @@ export default class CreatePayment implements Seeder {
         price: 3000,
         paymentDate: '2020-01-01',
         paymentType: PaymentType.INVESTMENT,
-        score: null,
+        satisfaction: null,
       },
     ];
 

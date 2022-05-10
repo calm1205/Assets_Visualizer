@@ -22,11 +22,11 @@ export class Payment {
   @ManyToOne(() => User, (_) => _.payments)
   user: User;
 
-  @Column()
+  @Column('uuid')
   @Field({ description: 'ユーザId' })
   userId: string;
 
-  @Column()
+  @Column('character varying', { length: 40 })
   @Field({ description: '支払いタイトル' })
   name: string;
 
@@ -42,9 +42,9 @@ export class Payment {
   @Field(() => PaymentType, { description: '支払いジャンル' })
   paymentType: PaymentType;
 
-  @Column({ nullable: true })
+  @Column('smallint', { nullable: true })
   @Field(() => Int, { nullable: true, description: '満足度' })
-  score: number;
+  satisfaction: number;
 
   @CreateDateColumn({ name: 'created_at', type: 'timestamp', precision: 0 })
   readonly createdAt: Date;

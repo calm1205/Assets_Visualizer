@@ -4,7 +4,7 @@
 export class Satisfaction {
   static MIN = 1;
   static MAX = 100;
-  public value: number;
+  public readonly value: number;
 
   constructor(input: number) {
     if (this._valid(input)) this.value = input;

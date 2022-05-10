@@ -44,7 +44,7 @@ export class PaymentInput {
   @IsNotEmpty({ message: '満足度は必須です。' })
   @Min(1, { message: '満足度は1以上を指定してください。' })
   @Max(100, { message: '満足度は100以下を指定してください。' })
-  @ValidateIf((_) => _.score === 0 || !!_.score)
+  @ValidateIf((_) => _.satisfaction === 0 || !!_.satisfaction)
   @Field(() => Int, { nullable: true, description: '満足度' })
-  score?: number;
+  satisfaction?: number;
 }
