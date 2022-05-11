@@ -26,11 +26,11 @@ export class Payment {
   @Field({ description: 'ユーザId' })
   userId: string;
 
-  @Column('character varying', { length: 40 })
+  @Column({ type: 'character varying', length: 40 })
   @Field({ description: '支払いタイトル' })
   name: string;
 
-  @Column()
+  @Column({ type: 'integer' })
   @Field(() => Int, { description: '支払い金額' })
   price: number;
 
@@ -38,11 +38,11 @@ export class Payment {
   @Field(() => Date, { description: '支払日' })
   paymentDate: Date;
 
-  @Column()
+  @Column({ type: 'enum', enum: PaymentType })
   @Field(() => PaymentType, { description: '支払いジャンル' })
   paymentType: PaymentType;
 
-  @Column('smallint', { nullable: true })
+  @Column({ type: 'smallint', nullable: true })
   @Field(() => Int, { nullable: true, description: '満足度' })
   satisfaction: number;
 
