@@ -29,7 +29,7 @@ export class PeriodecPayment {
 
   @Column()
   @Field({ description: '支払いタイトル' })
-  name: string;
+  title: string;
 
   @Column()
   @Field(() => Int, { description: '支払い金額' })

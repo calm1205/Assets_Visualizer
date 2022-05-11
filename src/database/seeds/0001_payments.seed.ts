@@ -13,7 +13,7 @@ export default class CreatePayment implements Seeder {
     const data: Input[] = [
       {
         userId: userId,
-        name: '交通費',
+        title: '交通費',
         price: 1000,
         paymentDate: '2020-01-01',
         paymentType: PaymentType.EXPENSES,
@@ -21,7 +21,7 @@ export default class CreatePayment implements Seeder {
       },
       {
         userId: userId,
-        name: '飲み会',
+        title: '飲み会',
         price: 6000,
         paymentDate: '2020-01-01',
         paymentType: PaymentType.WASTE,
@@ -29,7 +29,7 @@ export default class CreatePayment implements Seeder {
       },
       {
         userId: userId,
-        name: '参考書',
+        title: '参考書',
         price: 3000,
         paymentDate: '2020-01-01',
         paymentType: PaymentType.INVESTMENT,

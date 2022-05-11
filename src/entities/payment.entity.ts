@@ -28,7 +28,7 @@ export class Payment {
 
   @Column({ type: 'character varying', length: 40 })
   @Field({ description: '支払いタイトル' })
-  name: string;
+  title: string;
 
   @Column({ type: 'integer' })
   @Field(() => Int, { description: '支払い金額' })

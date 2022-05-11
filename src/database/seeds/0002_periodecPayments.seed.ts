@@ -12,21 +12,21 @@ export default class CreatePeriodecPayment implements Seeder {
     const data: PeriodecPaymentInput[] = [
       {
         userId: userId,
-        name: '家賃',
+        title: '家賃',
         price: 100000,
         paymentPeriod: PaymentPeriod.MONTHLY,
         paymentType: PaymentType.EXPENSES,
       },
       {
         userId: userId,
-        name: 'ジム',
+        title: 'ジム',
         price: 6000,
         paymentPeriod: PaymentPeriod.MONTHLY,
         paymentType: PaymentType.SELF_INVESTMENT,
       },
       {
         userId: userId,
-        name: '積立NISA',
+        title: '積立NISA',
         price: 30000,
         paymentPeriod: PaymentPeriod.MONTHLY,
         paymentType: PaymentType.INVESTMENT,

@@ -22,7 +22,7 @@ export class PaymentInput {
   @IsNotEmpty({ message: '支払いタイトルは必須です。' })
   @MaxLength(40, { message: '支払いタイトルは40文字までです。' })
   @Field({ description: '支払いタイトル' })
-  name: string;
+  title: string;
 
   @IsNotEmpty({ message: '金額は必須です。' })
   @Min(0, { message: '金額は0以上を指定してください。' })

@@ -20,7 +20,7 @@
 | ------------ | --------------------- | ----------------- | -------------------------- |
 | id           | uuid(pk)              | 主キー            |
 | user_id      | uuid(fk)              | ユーザ id         |
-| name         | varchar(255)          | 支払いタイトル    |
+| title        | varchar(255)          | 支払いタイトル    |
 | price        | integer               | 支払い金額        |
 | payment_date | datetime              | 支払い日時        |
 | payment_type | varchar(255)          | 支払いジャンル id | 浪費、消費、投資、自己投資 |
@@ -36,7 +36,7 @@
 | --------------- | -------------------------------- | ----------------- | -------------------------- |
 | id              | uuid(pk)                         | 主キー            |
 | user_id         | uuid(fk)                         | ユーザ id         |
-| name            | varchar(255)                     | 支払いタイトル    |
+| title           | varchar(255)                     | 支払いタイトル    |
 | price           | integer                          | 支払い金額        |
 | payment_period  | varchar(255)                     | 支払い周期        | 日、週、月、年             |
 | payment_type    | varchar(255)                     | 支払いジャンル id | 浪費、消費、投資、自己投資 |

@@ -14,7 +14,7 @@ export class PeriodecPaymentInput {
 
   @IsNotEmpty({ message: '支払いタイトルは必須です。' })
   @Field({ description: '支払いタイトル' })
-  name: string;
+  title: string;
 
   @IsNotEmpty({ message: '金額は必須です。' })
   @Field(() => Int, { description: '金額' })
