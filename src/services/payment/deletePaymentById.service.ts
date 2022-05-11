@@ -22,7 +22,7 @@ export class DeletePaymentByIdService {
 
     const dbPayment = await paymentRepository.findOne(paymentId);
 
-    if (dbPayment.userId !== user.id)
+    if (!dbPayment.isOwnPayment(user.id))
       throw new BadRequestException('自身の支払い以外は削除できません。');
 
     const deleteResult = await paymentRepository.delete(paymentId);

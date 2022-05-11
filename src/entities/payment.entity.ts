@@ -51,4 +51,8 @@ export class Payment {
 
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamp', precision: 0 })
   readonly updatedAt: Date;
+
+  isOwnPayment(userId: string) {
+    return this.userId === userId;
+  }
 }
