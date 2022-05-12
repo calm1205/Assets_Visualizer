@@ -1,3 +1,4 @@
+import { UpsertPeriodecPaymentById } from './mutation/upsertPeriodecPaymentById';
 import { FindPeriodecPaymentById } from './query/findPeriodecPaymentById';
 
-export default [FindPeriodecPaymentById];
+export default [FindPeriodecPaymentById, UpsertPeriodecPaymentById];

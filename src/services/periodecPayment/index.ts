@@ -1,3 +1,4 @@
 import { FindPeriodecPaymentByIdService } from './findPeriodecPaymentById.service';
+import { UpsertPeriodecPaymentService } from './upsertPeriodecPaymentById.service';
 
-export default [FindPeriodecPaymentByIdService];
+export default [FindPeriodecPaymentByIdService, UpsertPeriodecPaymentService];
