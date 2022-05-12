@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 """支払い"""
-type Payment {
+type PaymentEntity {
   """id"""
   id: ID!
 
@@ -68,7 +68,7 @@ type Query {
   findUserById(userId: String!): User!
 
   """支払いのid検索"""
-  findPaymentById(paymentId: String!): Payment!
+  findPaymentById(paymentId: String!): PaymentEntity!
 }
 
 type Mutation {
@@ -118,7 +118,7 @@ input PaymentInput {
   price: Int!
 
   """支払い日時"""
-  paymentDate: DateTime = "2022-05-11T01:00:07.572Z"
+  paymentDate: DateTime = "2022-05-12T00:02:51.904Z"
 
   """支払いジャンル"""
   paymentType: PaymentType!

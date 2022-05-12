@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { Payment } from '~/entities/payment.entity';
+import { PaymentEntity } from '~/entities/payment.entity';
 import { User } from '~/entities/user.entity';
 import { PaymentInput } from '~/interfaces/inputs/payment.input';
 import { ResultOutput } from '~/interfaces/outputs/result.outputs';
@@ -12,8 +12,8 @@ import { Result } from '../result/result';
 @Injectable()
 export class UpsertPaymentService {
   constructor(
-    @InjectRepository(Payment)
-    private readonly paymentRepository: Repository<Payment>,
+    @InjectRepository(PaymentEntity)
+    private readonly paymentRepository: Repository<PaymentEntity>,
   ) {}
 
   async execute(input: PaymentInput, user: User): Promise<ResultOutput> {

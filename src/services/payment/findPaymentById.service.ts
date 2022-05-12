@@ -2,16 +2,16 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { Payment } from '~/entities/payment.entity';
+import { PaymentEntity } from '~/entities/payment.entity';
 
 @Injectable()
 export class FindPaymentByIdService {
   constructor(
-    @InjectRepository(Payment)
-    private readonly paymentRepository: Repository<Payment>,
+    @InjectRepository(PaymentEntity)
+    private readonly paymentRepository: Repository<PaymentEntity>,
   ) {}
 
-  async execute(paymentId: string): Promise<Payment> {
+  async execute(paymentId: string): Promise<PaymentEntity> {
     const payment = await this.paymentRepository.findOne(paymentId);
     if (!payment) throw new NotFoundException();
     return payment;

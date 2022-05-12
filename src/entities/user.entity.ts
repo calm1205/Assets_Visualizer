@@ -8,7 +8,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { Payment } from './payment.entity';
+import { PaymentEntity } from './payment.entity';
 import { PeriodecPayment } from './periodecPayment.entity';
 
 @Entity({ name: 'users' })
@@ -26,8 +26,8 @@ export class User {
   @Field({ description: 'パスワード' })
   password: string;
 
-  @OneToMany(() => Payment, (_) => _.user)
-  payments: Payment[];
+  @OneToMany(() => PaymentEntity, (_) => _.user)
+  payments: PaymentEntity[];
 
   @OneToMany(() => PeriodecPayment, (_) => _.user)
   periodecPayments: PeriodecPayment[];

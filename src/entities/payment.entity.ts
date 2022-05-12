@@ -14,7 +14,7 @@ import { User } from './user.entity';
 
 @Entity({ name: 'payments' })
 @ObjectType({ description: '支払い' })
-export class Payment {
+export class PaymentEntity {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => ID, { description: 'id' })
   id: string;
@@ -51,8 +51,4 @@ export class Payment {
 
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamp', precision: 0 })
   readonly updatedAt: Date;
-
-  isOwnPayment(userId: string) {
-    return this.userId === userId;
-  }
 }
