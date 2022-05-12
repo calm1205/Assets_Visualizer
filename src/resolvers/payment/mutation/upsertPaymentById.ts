@@ -18,6 +18,6 @@ export class UpsertPaymentById {
     @Args('input') input: PaymentInput,
     @CurrentUser() user: User,
   ) {
-    return await this.usecase.execute(input, user);
+    return await this.usecase.execute(input, user.id);
   }
 }
