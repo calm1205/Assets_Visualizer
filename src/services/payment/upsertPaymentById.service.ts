@@ -2,23 +2,23 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { Payment } from '~/entities/payment.entity';
-import { User } from '~/entities/user.entity';
+import { PaymentEntity } from '~/entities/payment.entity';
 import { PaymentInput } from '~/interfaces/inputs/payment.input';
 import { ResultOutput } from '~/interfaces/outputs/result.outputs';
 
+import { Payment } from '../domain/payment/payment';
 import { Result } from '../result/result';
 
 @Injectable()
 export class UpsertPaymentService {
   constructor(
-    @InjectRepository(Payment)
-    private readonly paymentRepository: Repository<Payment>,
+    @InjectRepository(PaymentEntity)
+    private readonly paymentRepository: Repository<PaymentEntity>,
   ) {}
 
-  async execute(input: PaymentInput, user: User): Promise<ResultOutput> {
-    if (!input.paymentId) return await this._create(input, user);
-    if (input.paymentId) return await this._update(input, user);
+  async execute(input: PaymentInput, userId: string): Promise<ResultOutput> {
+    if (!input.paymentId) return await this._create(input, userId);
+    return await this._update(input, userId);
   }
 
   /**
@@ -26,12 +26,10 @@ export class UpsertPaymentService {
    */
   private async _create(
     input: PaymentInput,
-    createUser: User,
+    userId: string,
   ): Promise<ResultOutput> {
-    const payment = this.paymentRepository.save({
-      ...input,
-      userId: createUser.id,
-    });
+    const paymentRepository = this.paymentRepository;
+    const payment = paymentRepository.save({ ...input, userId });
     return new Result(payment).result;
   }
 
@@ -40,18 +38,17 @@ export class UpsertPaymentService {
    */
   private async _update(
     input: PaymentInput,
-    updateUser: User,
+    userId: string,
   ): Promise<ResultOutput> {
-    const dbPayment = await this.paymentRepository.findOne(input.paymentId);
+    const paymentRepository = this.paymentRepository;
+    const dbPayment = await paymentRepository.findOne(input.paymentId);
+    const payment = new Payment(dbPayment);
 
-    if (dbPayment.userId !== updateUser.id)
+    if (!payment.isOwnPayment(userId))
       throw new BadRequestException('自身の支払い以外は更新できません。');
 
     const { paymentId, ...updateObject } = input;
-    const update = await this.paymentRepository.update(
-      dbPayment.id,
-      updateObject,
-    );
+    const update = await paymentRepository.update(payment.id, updateObject);
     return new Result(update).result;
   }
 }

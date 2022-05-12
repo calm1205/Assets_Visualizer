@@ -18,7 +18,7 @@ query searchPayment(
 ```gql
 type SearchPaymentInput {
   timeRange: TimeRange;
-  scoreRange: ScoreRange;
+  satisfactionRange: ScoreRange;
   paymentType: PaymentTypeEnum;
   searchWord: String;
   sort: SortType;
@@ -36,7 +36,7 @@ type ScoreRange: {
   min: Int;
 }
 
-type SortType: 'date' | 'price' | 'score';
+type SortType: 'date' | 'price' | 'satisfaction';
 ```
 
 ## output
@@ -51,7 +51,7 @@ type SearchPaymentOutPut {
 type Payment {
   name: String;
   price: Int;
-  score: Int;
+  satisfaction: Int;
   paymentType: PaymentTypeEnum;
   paymentDate: Date;
 }
@@ -73,7 +73,7 @@ type Payment {
 
 #### 満足度の範囲指定
 
-- min 以上 max 以下の score に該当する支払いを表示
+- min 以上 max 以下の satisfaction に該当する支払いを表示
 - min が max を上回っていたら error を返す。
 
 #### 支払い種類指定

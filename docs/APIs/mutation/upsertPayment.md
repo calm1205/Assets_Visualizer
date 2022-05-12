@@ -14,7 +14,7 @@ mutation upsertPayment(
 type UpsertPaymentInput {
   name: String;
   price: Int;
-  score: Int;
+  satisfaction: Int;
   paymentType: PaymentTypeEnum;
   paymentDate: Date;
 }

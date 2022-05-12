@@ -22,7 +22,7 @@ export class PaymentInput {
   @IsNotEmpty({ message: '支払いタイトルは必須です。' })
   @MaxLength(40, { message: '支払いタイトルは40文字までです。' })
   @Field({ description: '支払いタイトル' })
-  name: string;
+  title: string;
 
   @IsNotEmpty({ message: '金額は必須です。' })
   @Min(0, { message: '金額は0以上を指定してください。' })
@@ -44,7 +44,7 @@ export class PaymentInput {
   @IsNotEmpty({ message: '満足度は必須です。' })
   @Min(1, { message: '満足度は1以上を指定してください。' })
   @Max(100, { message: '満足度は100以下を指定してください。' })
-  @ValidateIf((_) => _.score === 0 || !!_.score)
+  @ValidateIf((_) => _.satisfaction === 0 || !!_.satisfaction)
   @Field(() => Int, { nullable: true, description: '満足度' })
-  score?: number;
+  satisfaction?: number;
 }

@@ -14,7 +14,7 @@ import { User } from './user.entity';
 
 @Entity({ name: 'payments' })
 @ObjectType({ description: '支払い' })
-export class Payment {
+export class PaymentEntity {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => ID, { description: 'id' })
   id: string;
@@ -22,15 +22,15 @@ export class Payment {
   @ManyToOne(() => User, (_) => _.payments)
   user: User;
 
-  @Column()
+  @Column('uuid')
   @Field({ description: 'ユーザId' })
   userId: string;
 
-  @Column()
+  @Column({ type: 'character varying', length: 40 })
   @Field({ description: '支払いタイトル' })
-  name: string;
+  title: string;
 
-  @Column()
+  @Column({ type: 'integer' })
   @Field(() => Int, { description: '支払い金額' })
   price: number;
 
@@ -38,13 +38,13 @@ export class Payment {
   @Field(() => Date, { description: '支払日' })
   paymentDate: Date;
 
-  @Column()
+  @Column({ type: 'enum', enum: PaymentType })
   @Field(() => PaymentType, { description: '支払いジャンル' })
   paymentType: PaymentType;
 
-  @Column({ nullable: true })
+  @Column({ type: 'smallint', nullable: true })
   @Field(() => Int, { nullable: true, description: '満足度' })
-  score: number;
+  satisfaction: number;
 
   @CreateDateColumn({ name: 'created_at', type: 'timestamp', precision: 0 })
   readonly createdAt: Date;

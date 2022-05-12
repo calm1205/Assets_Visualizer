@@ -35,8 +35,11 @@ drop:
 	npm run typeorm schema:drop
 
 reset:
+	rm -rf ./src/database/migrations/*.ts
 	npm run build
 	npm run typeorm schema:drop
+	npx typeorm migration:generate -n Inisial
+	npm run build
 	npm run typeorm migration:run
 	npm run seed:run
 

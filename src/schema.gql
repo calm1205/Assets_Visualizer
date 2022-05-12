@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 """支払い"""
-type Payment {
+type PaymentEntity {
   """id"""
   id: ID!
 
@@ -11,7 +11,7 @@ type Payment {
   userId: String!
 
   """支払いタイトル"""
-  name: String!
+  title: String!
 
   """支払い金額"""
   price: Int!
@@ -23,7 +23,7 @@ type Payment {
   paymentType: PaymentType!
 
   """満足度"""
-  score: Int
+  satisfaction: Int
 }
 
 """
@@ -68,7 +68,7 @@ type Query {
   findUserById(userId: String!): User!
 
   """支払いのid検索"""
-  findPaymentById(paymentId: String!): Payment!
+  findPaymentById(paymentId: String!): PaymentEntity!
 }
 
 type Mutation {
@@ -112,19 +112,19 @@ input PaymentInput {
   paymentId: String
 
   """支払いタイトル"""
-  name: String!
+  title: String!
 
   """金額"""
   price: Int!
 
   """支払い日時"""
-  paymentDate: DateTime = "2022-05-05T03:06:12.452Z"
+  paymentDate: DateTime = "2022-05-12T00:13:49.369Z"
 
   """支払いジャンル"""
   paymentType: PaymentType!
 
   """満足度"""
-  score: Int
+  satisfaction: Int
 }
 
 """支払い削除用Input"""
