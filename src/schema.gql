@@ -39,6 +39,38 @@ enum PaymentType {
   SELF_INVESTMENT
 }
 
+"""定期支払テーブル"""
+type PeriodecPaymentEntity {
+  """id"""
+  id: ID!
+
+  """ユーザId"""
+  userId: String!
+
+  """支払いタイトル"""
+  title: String!
+
+  """支払い金額"""
+  price: Int!
+
+  """支払頻度"""
+  paymentPeriod: PaymentPeriod!
+
+  """支払いジャンル"""
+  paymentType: PaymentType!
+
+  """年利(%)"""
+  annualInterest: Float!
+}
+
+"""payment cycle"""
+enum PaymentPeriod {
+  DAILY
+  WEEKLY
+  MONTHLY
+  YEAR
+}
+
 """ユーザ"""
 type User {
   """id"""
@@ -69,6 +101,9 @@ type Query {
 
   """支払いのid検索"""
   findPaymentById(paymentId: String!): PaymentEntity!
+
+  """定期支払のid検索"""
+  findPeriodecPaymentById(periodecPaymentId: String!): PeriodecPaymentEntity!
 }
 
 type Mutation {
@@ -83,6 +118,9 @@ type Mutation {
 
   """支払い削除"""
   deletePaymentById(input: DeletePaymentInput!): ResultOutput!
+
+  """定期支払いの登録/更新"""
+  upsertPeriodecPaymentById(input: PeriodecPaymentInput!): ResultOutput!
 }
 
 """ユーザ登録用Input"""
@@ -118,7 +156,7 @@ input PaymentInput {
   price: Int!
 
   """支払い日時"""
-  paymentDate: DateTime = "2022-05-12T00:13:49.369Z"
+  paymentDate: DateTime = "2022-05-12T00:58:01.012Z"
 
   """支払いジャンル"""
   paymentType: PaymentType!
@@ -131,4 +169,25 @@ input PaymentInput {
 input DeletePaymentInput {
   """支払いId"""
   paymentId: String!
+}
+
+"""定期支払い登録/更新用Input"""
+input PeriodecPaymentInput {
+  """定期支払いId"""
+  periodecPaymentId: String
+
+  """定期支払いタイトル"""
+  title: String!
+
+  """金額"""
+  price: Int!
+
+  """支払い頻度"""
+  paymentPeriod: PaymentPeriod!
+
+  """支払いジャンル"""
+  paymentType: PaymentType!
+
+  """年利"""
+  annualInterest: Float = 0
 }

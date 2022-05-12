@@ -15,7 +15,7 @@ import { User } from './user.entity';
 
 @Entity({ name: 'periodec_payments' })
 @ObjectType({ description: '定期支払テーブル' })
-export class PeriodecPayment {
+export class PeriodecPaymentEntity {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => ID, { description: 'id' })
   id: string;
