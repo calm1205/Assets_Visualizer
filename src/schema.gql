@@ -39,6 +39,38 @@ enum PaymentType {
   SELF_INVESTMENT
 }
 
+"""定期支払テーブル"""
+type PeriodecPaymentEntity {
+  """id"""
+  id: ID!
+
+  """ユーザId"""
+  userId: String!
+
+  """支払いタイトル"""
+  title: String!
+
+  """支払い金額"""
+  price: Int!
+
+  """支払頻度"""
+  paymentPeriod: PaymentPeriod!
+
+  """支払いジャンル"""
+  paymentType: PaymentType!
+
+  """年利(%)"""
+  annualInterest: Float!
+}
+
+"""payment cycle"""
+enum PaymentPeriod {
+  DAILY
+  WEEKLY
+  MONTHLY
+  YEAR
+}
+
 """ユーザ"""
 type User {
   """id"""
@@ -69,6 +101,9 @@ type Query {
 
   """支払いのid検索"""
   findPaymentById(paymentId: String!): PaymentEntity!
+
+  """定期支払のid検索"""
+  findPeriodecPaymentById(periodecPaymentId: String!): PeriodecPaymentEntity!
 }
 
 type Mutation {
@@ -118,7 +153,7 @@ input PaymentInput {
   price: Int!
 
   """支払い日時"""
-  paymentDate: DateTime = "2022-05-12T00:13:49.369Z"
+  paymentDate: DateTime = "2022-05-12T00:32:20.623Z"
 
   """支払いジャンル"""
   paymentType: PaymentType!
